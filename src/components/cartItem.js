@@ -2,6 +2,7 @@ import React from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { BiPlus,BiMinus } from "react-icons/bi";
 import { useGlobalContext } from "../context/context";
+// import axios from 'axios'
 
 const CartItem = ({_id,name,image,price,countInStock}) => {
   const prova = useGlobalContext()
@@ -20,7 +21,7 @@ const CartItem = ({_id,name,image,price,countInStock}) => {
   <BiMinus className="icon minus-icon"/>
   </button>
   </div>
-  <p>{price}</p>
+  <p>{price} €</p>
   <button className="btn icon-btn">
   <MdDeleteForever className="icon minus-icon"/>
   </button>

@@ -2,6 +2,7 @@ import React from "react";
 import product from '../product'
 import CartItem from './CartItem'
 import { MdRemoveShoppingCart } from "react-icons/md";
+import { useGlobalContext } from "../context/context";
 
 const Cart = () => {
   return (

@@ -1,6 +1,8 @@
 import React from "react";
+import { useGlobalContext } from "../context/context";
 
 const TotalBox = () => {
+  const {total}= useGlobalContext()
   return <section className="total-section section-center">
     <div className="card">
       <header className="card-header">
@@ -8,7 +10,7 @@ const TotalBox = () => {
       </header>
       <hr/>
       <div className="card-content">
-        <h4>00</h4>
+        <h4>0 €</h4>
       </div>
       <hr/>
       <footer className="card-footer">
