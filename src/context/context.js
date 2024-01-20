@@ -7,7 +7,11 @@ import reducer from "./reducer";
 import {
   DATA_FETCHING_STARTED,
   DATA_FETCHING_FAILED,
-  DATA_FETCHING_SUCCESS
+  DATA_FETCHING_SUCCESS,
+  DELETE_ITEM,
+  SVUOTA_CARRELLO,
+  AUMENTA_QTY,
+  DIMINUISCI_QTY
 } from "./actions";
 // Creo il context per essere utilizzato dai miei componenti
 const AppContext = React.createContext();
@@ -17,13 +21,33 @@ const url = "https://react--course-api.herokuapp.com/api/v1/data/cart";
 
 //Stato iniziale del nostro Reducer
 const initialState = {
-//   products: [],
+  products: [],
   isLoading: true,
   isError: false,
 };
 //Componente con cui Wrappare la nostra intera app (o il componente che ha bisogno di accedere ad un determinato provider)
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Cancella un singolo elemento
+  const deleteItem = (_id) => {
+    dispatch({type: DELETE_ITEM, payload : _id})
+  }
+
+  // Svuota il carrello
+  const deleteAll = (_id) => {
+    dispatch({type: SVUOTA_CARRELLO})
+  }
+
+  // Aggiungi prodotto
+  const aumentaQty = (_id) => {
+    dispatch ({type:AUMENTA_QTY, payload : _id})
+  }
+
+    // Diminuisci prodotto
+    const diminuisciQty = (_id) => {
+      dispatch ({type:DIMINUISCI_QTY, payload : _id})
+    }
 
   useEffect(() => {
     (async () => {
@@ -45,6 +69,10 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
+        deleteItem,
+        deleteAll,
+        aumentaQty,
+        diminuisciQty,
       }}
     >
       {children}
