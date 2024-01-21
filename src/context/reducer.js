@@ -12,7 +12,7 @@ import {
 const reducer = (state, action) => {
   //Inizio fetch dei dati
   if (action.type === DATA_FETCHING_STARTED) {
-    return { ...state, isError: false, isLoading: false };
+    return { ...state, isError: false, isLoading: true };
   }
   if (action.type === DATA_FETCHING_SUCCESS) {
     //Modifico Dati Fetchati Array
