@@ -9,6 +9,7 @@ const Navbar = () => {
         </div>
         <div className="nav-cart">
         <HiShoppingCart className="icon nav-icon" />
+        <div className="cart-counter">5</div>
         </div>
     </header>
   </nav>;
