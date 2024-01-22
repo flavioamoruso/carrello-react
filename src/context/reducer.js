@@ -6,6 +6,8 @@ import {
   SVUOTA_CARRELLO,
   AUMENTA_QTY,
   DIMINUISCI_QTY,
+  COSTO_TOTALE,
+  CONTATORE,
   
 } from "./actions";
 
@@ -59,9 +61,24 @@ const reducer = (state, action) => {
         })
       }}
       //Calcolo somma degli acquisti
+      if(action.type===COSTO_TOTALE){
+        return {
+          ...state,
+          total : state.products.reduce((total,item)=>{
+          return total + item.qty * item.price
+          }, 0)
+        }
+      }
       
       //Calcolo numero di items nel carrello
-      
+      if(action.type===CONTATORE){
+        return {
+          ...state,
+          itemCounter : state.products.reduce((total,item)=>{
+          return total + item.qty 
+          }, 0)
+        }
+      }
       //Cancello tutti gli elementi
       if (action.type === SVUOTA_CARRELLO) {
         return {

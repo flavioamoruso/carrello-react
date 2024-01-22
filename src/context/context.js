@@ -11,7 +11,9 @@ import {
   DELETE_ITEM,
   SVUOTA_CARRELLO,
   AUMENTA_QTY,
-  DIMINUISCI_QTY
+  DIMINUISCI_QTY,
+  COSTO_TOTALE,
+  CONTATORE,
 } from "./actions";
 // Creo il context per essere utilizzato dai miei componenti
 const AppContext = React.createContext();
@@ -64,6 +66,11 @@ const AppProvider = ({ children }) => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(()=>{
+  dispatch({type:COSTO_TOTALE})
+  dispatch({type:CONTATORE})
+  },[state.products])
 
   return (
     <AppContext.Provider

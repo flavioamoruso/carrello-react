@@ -1,6 +1,7 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { BiPlus,BiMinus } from "react-icons/bi";
+import formatNumber from '../utils/formatNumber';
 import { useGlobalContext } from "../context/context";
 // import axios from 'axios'
 
@@ -37,7 +38,7 @@ const CartItem = ({_id,name,image,price,qty,countInStock}) => {
   <BiMinus className="icon minus-icon"onClick={()=>sottraiQty(_id)}/>
   </button>
   </div>
-  <p>{price} €</p>
+  <p>{formatNumber(price)}</p>
   <button className="btn icon-btn" onClick={()=> deleteItem(_id)}>
   <MdDeleteForever className="icon minus-icon"/>
   </button>
